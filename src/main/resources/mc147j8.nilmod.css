@@ -1,0 +1,10 @@
+@nilmod {
+    name: "MC147J8";
+    description: "Makes Java 8 Forge mods run on MC 1.4.7.";
+    authors: "ThexXTURBOXx";
+    version: "${version}";
+}
+
+entrypoints {
+    premain: "de.femtopedia.mc147j8.MC147J8Premain";
+}
