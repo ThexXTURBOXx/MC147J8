@@ -1,5 +1,7 @@
 package de.femtopedia.mc147j8.transformers;
 
+import java.util.zip.ZipEntry;
+import nilloader.api.lib.asm.tree.AbstractInsnNode;
 import nilloader.api.lib.asm.tree.LabelNode;
 import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
@@ -8,38 +10,55 @@ import nilloader.api.lib.mini.annotation.Patch;
 @Patch.Class("cpw.mods.fml.common.discovery.JarDiscoverer")
 public class JarDiscovererTransformer extends MiniTransformer {
 
+    @Patch.Method.AffectsControlFlow
     @Patch.Method("discover(Lcpw/mods/fml/common/discovery/ModCandidate;Lcpw/mods/fml/common/discovery/ASMDataTable;)" +
                   "Ljava/util/List;")
     public void skipModuleInfos(PatchContext ctx) {
         LabelNode Lskip = new LabelNode();
 
         ctx.search(
-                ASTORE(7)
+                INVOKEVIRTUAL("java/util/ArrayList", "iterator", "()Ljava/util/Iterator;")
         ).jumpAfter();
+        ctx.jumpForward(1); // Yes, this is safe. Also, this is more safe than the old approach...
 
         ctx.add(
                 Lskip
         );
 
-        ctx.search(
-                LDC("__MACOSX")
-        ).jumpBefore();
-        ctx.searchBackward(
-                ALOAD(8)
-        ).jumpBefore();
+        PatchContext.SearchResult patternLoad = ctx.search(
+                GETSTATIC("cpw/mods/fml/common/discovery/JarDiscoverer", "classFile", "Ljava/util/regex/Pattern;")
+        );
+        patternLoad.jumpAfter();
 
+        AbstractInsnNode aload = ctx.get();
+
+        patternLoad.jumpBefore();
         ctx.add(
-                ALOAD(8),
-                INVOKEVIRTUAL("java/util/zip/ZipEntry", "getName", "()Ljava/lang/String;"),
-                LDC("META-INF/versions/"), // Only supported with version 9+ - so we can safely ignore on Java 8
-                INVOKEVIRTUAL("java/lang/String", "startsWith", "(Ljava/lang/String;)Z"),
-                IFNE(Lskip),
-                ALOAD(8),
-                INVOKEVIRTUAL("java/util/zip/ZipEntry", "getName", "()Ljava/lang/String;"),
-                LDC("module-info.class"), // Safeguard for stray module infos
-                INVOKEVIRTUAL("java/lang/String", "endsWith", "(Ljava/lang/String;)Z"),
+                aload.clone(null),
+                INVOKESTATIC("de/femtopedia/mc147j8/transformers/JarDiscovererTransformer$Hooks", "shouldSkipEntry",
+                        "(Ljava/util/zip/ZipEntry;)Z"),
                 IFNE(Lskip)
         );
+    }
+
+    public static class Hooks {
+
+        public static boolean shouldSkipEntry(ZipEntry ze) {
+            // This is from "Vanilla Forge" - don't know if possible/needed
+            if (ze.getName() == null) return true;
+
+            // This is from "Vanilla Forge" - just here for 1.4.5 and earlier
+            if (ze.getName().startsWith("__MACOSX")) return true;
+
+            // Only supported with version 9+ - so we can safely ignore on Java 8
+            if (ze.getName().startsWith("META-INF/versions/")) return true;
+
+            // Safeguard for stray module infos
+            if (ze.getName().endsWith("module-info.class")) return true;
+
+            return false;
+        }
+
     }
 
 }

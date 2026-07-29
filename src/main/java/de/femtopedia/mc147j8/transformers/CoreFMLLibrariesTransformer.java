@@ -8,80 +8,56 @@ import nilloader.api.lib.mini.annotation.Patch;
 public class CoreFMLLibrariesTransformer extends MiniTransformer {
 
     @Patch.Method("getRootURL()Ljava/lang/String;")
-    public void useWaybackMachineIfNeeded(PatchContext ctx) {
-        ctx.search(
-                LDC("http://files.minecraftforge.net/fmllibs/%s")
-        ).jumpAfter();
+    public void useMirror(PatchContext ctx) {
+        ctx.jumpToStart();
 
         ctx.add(
-                POP(),
-                LDC("https://github.com/ThexXTURBOXx/MC147J8/raw/refs/heads/main/libs/%s")
+                LDC("https://github.com/ThexXTURBOXx/MC147J8/raw/refs/heads/main/libs/%s"),
+                ARETURN()
         );
     }
 
     @Patch.Method("<clinit>()V")
     public void updateLibrariesAndAddGson(PatchContext ctx) {
         ctx.search(
-                ICONST_4()
-        ).jumpAfter();
+                PUTSTATIC("cpw/mods/fml/relauncher/CoreFMLLibraries", "libraries", "[Ljava/lang/String;")
+        ).jumpBefore();
+
         ctx.add(
                 POP(),
-                ICONST_5()
+                GETSTATIC("de/femtopedia/mc147j8/transformers/CoreFMLLibrariesTransformer$Hooks", "libraries",
+                        "[Ljava/lang/String;")
         );
 
         ctx.search(
-                LDC("asm-all-4.0.jar")
-        ).jumpAfter();
+                PUTSTATIC("cpw/mods/fml/relauncher/CoreFMLLibraries", "checksums", "[Ljava/lang/String;")
+        ).jumpBefore();
+
         ctx.add(
                 POP(),
-                LDC("asm-all-5.2.jar")
+                GETSTATIC("de/femtopedia/mc147j8/transformers/CoreFMLLibrariesTransformer$Hooks", "checksums",
+                        "[Ljava/lang/String;")
         );
+    }
 
-        ctx.search(
-                LDC("bcprov-jdk15on-147.jar")
-        ).jumpAfter();
-        ctx.add(
-                POP(),
-                LDC("bcprov-jdk15on-1.69.jar")
-        );
+    public static class Hooks {
 
-        ctx.add(
-                AASTORE(),
-                DUP(),
-                ICONST_4(),
-                LDC("gson-2.14.0.jar")
-        );
+        public static final String[] libraries = new String[]{
+                "argo-2.25.jar",
+                "guava-12.0.1.jar",
+                "asm-all-5.2.jar",
+                "bcprov-jdk15on-1.69.jar",
+                "gson-2.14.0.jar"
+        };
 
-        ctx.search(
-                ICONST_4()
-        ).jumpAfter();
-        ctx.add(
-                POP(),
-                ICONST_5()
-        );
+        public static final String[] checksums = new String[]{
+                "bb672829fde76cb163004752b86b0484bd0a7f4b",
+                "b8e78b9af7bf45900e14c6f958486b6ca682195f",
+                "2ea49e08b876bbd33e0a7ce75c8f371d29e1f10a",
+                "91e1628251cf3ca90093ce9d0fe67e5b7dab3850",
+                "efc0e34ede4e3204eaefb84a00e55e8c86634382"
+        };
 
-        ctx.search(
-                LDC("98308890597acb64047f7e896638e0d98753ae82")
-        ).jumpAfter();
-        ctx.add(
-                POP(),
-                LDC("2ea49e08b876bbd33e0a7ce75c8f371d29e1f10a")
-        );
-
-        ctx.search(
-                LDC("b6f5d9926b0afbde9f4dbe3db88c5247be7794bb")
-        ).jumpAfter();
-        ctx.add(
-                POP(),
-                LDC("91e1628251cf3ca90093ce9d0fe67e5b7dab3850")
-        );
-
-        ctx.add(
-                AASTORE(),
-                DUP(),
-                ICONST_4(),
-                LDC("efc0e34ede4e3204eaefb84a00e55e8c86634382")
-        );
     }
 
 }
