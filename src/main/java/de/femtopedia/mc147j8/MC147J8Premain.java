@@ -10,6 +10,7 @@ import de.femtopedia.mc147j8.transformers.ModAnnotationVisitorTransformer;
 import de.femtopedia.mc147j8.transformers.ModClassVisitorTransformer;
 import de.femtopedia.mc147j8.transformers.ModFieldVisitorTransformer;
 import de.femtopedia.mc147j8.transformers.ModMethodVisitorTransformer;
+import de.femtopedia.mc147j8.transformers.RelaunchLibraryManagerTransformer;
 import nilloader.api.ClassTransformer;
 import nilloader.api.NilLogger;
 
@@ -20,6 +21,7 @@ public class MC147J8Premain implements Runnable {
     @Override
     public void run() {
         ClassTransformer.register(new CoreFMLLibrariesTransformer());
+        ClassTransformer.register(new RelaunchLibraryManagerTransformer());
 
         ClassTransformer.register(new ASMTransformerTransformer());
         ClassTransformer.register(new EventTransformerTransformer());
