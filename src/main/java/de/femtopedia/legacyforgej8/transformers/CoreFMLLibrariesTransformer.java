@@ -12,7 +12,8 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ctx.jumpToStart();
 
         ctx.add(
-                LDC("https://github.com/ThexXTURBOXx/LegacyForgeJ8/raw/refs/heads/main/libs/%s"),
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks",
+                        "getRootURL", "()Ljava/lang/String;"),
                 ARETURN()
         );
     }
@@ -24,8 +25,8 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ).jumpBefore();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks", "getLibraries",
-                        "([Ljava/lang/String;)[Ljava/lang/String;")
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks",
+                        "getLibraries", "([Ljava/lang/String;)[Ljava/lang/String;")
         );
 
         ctx.search(
@@ -33,8 +34,8 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ).jumpBefore();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks", "getChecksums",
-                        "([Ljava/lang/String;)[Ljava/lang/String;")
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks",
+                        "getChecksums", "([Ljava/lang/String;)[Ljava/lang/String;")
         );
     }
 
@@ -94,6 +95,11 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
             // 1.5.x
             checksums15x[4] = old[4];
             return checksums15x;
+        }
+
+        public static String getRootURL() {
+            return System.getProperty("fml.core.libraries.mirror",
+                    "https://github.com/ThexXTURBOXx/LegacyForgeJ8/raw/refs/heads/main/libs/%s");
         }
 
     }
