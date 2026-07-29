@@ -1,14 +1,14 @@
-package de.femtopedia.mc147j8.transformers;
+package de.femtopedia.legacyforgej8.transformers;
 
 import nilloader.api.lib.asm.Opcodes;
 import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
-@Patch.Class("cpw.mods.fml.common.asm.FMLSanityChecker$MLDetectorClassVisitor")
-public class MLDetectorClassVisitorTransformer extends MiniTransformer {
+@Patch.Class("cpw.mods.fml.common.asm.ASMTransformer")
+public class ASMTransformerTransformer extends MiniTransformer {
 
-    @Patch.Method("<init>()V")
+    @Patch.Method("transform(Ljava/lang/String;[B)[B")
     public void useASM5Opcode(PatchContext ctx) {
         ctx.search(
                 LDC(Opcodes.ASM4)

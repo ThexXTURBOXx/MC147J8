@@ -1,23 +1,23 @@
-package de.femtopedia.mc147j8;
+package de.femtopedia.legacyforgej8;
 
-import de.femtopedia.mc147j8.transformers.ASMTransformerTransformer;
-import de.femtopedia.mc147j8.transformers.CoreFMLLibrariesTransformer;
-import de.femtopedia.mc147j8.transformers.EventTransformerTransformer;
-import de.femtopedia.mc147j8.transformers.FMLRelauncherTransformer;
-import de.femtopedia.mc147j8.transformers.JarDiscovererTransformer;
-import de.femtopedia.mc147j8.transformers.MLDetectorClassVisitorTransformer;
-import de.femtopedia.mc147j8.transformers.ModAnnotationVisitorTransformer;
-import de.femtopedia.mc147j8.transformers.ModClassVisitorTransformer;
-import de.femtopedia.mc147j8.transformers.ModFieldVisitorTransformer;
-import de.femtopedia.mc147j8.transformers.ModMethodVisitorTransformer;
-import de.femtopedia.mc147j8.transformers.RelaunchClassLoaderTransformer;
-import de.femtopedia.mc147j8.transformers.RelaunchLibraryManagerTransformer;
+import de.femtopedia.legacyforgej8.transformers.ASMTransformerTransformer;
+import de.femtopedia.legacyforgej8.transformers.CoreFMLLibrariesTransformer;
+import de.femtopedia.legacyforgej8.transformers.EventTransformerTransformer;
+import de.femtopedia.legacyforgej8.transformers.FMLRelauncherTransformer;
+import de.femtopedia.legacyforgej8.transformers.JarDiscovererTransformer;
+import de.femtopedia.legacyforgej8.transformers.MLDetectorClassVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.ModAnnotationVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.ModClassVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.ModFieldVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.ModMethodVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.RelaunchClassLoaderTransformer;
+import de.femtopedia.legacyforgej8.transformers.RelaunchLibraryManagerTransformer;
 import nilloader.api.ClassTransformer;
 import nilloader.api.NilLogger;
 
-public class MC147J8Premain implements Runnable {
+public class LegacyForgeJ8Premain implements Runnable {
 
-    public static final NilLogger log = NilLogger.get("MC147J8");
+    public static final NilLogger log = NilLogger.get("LegacyForgeJ8");
 
     @Override
     public void run() {

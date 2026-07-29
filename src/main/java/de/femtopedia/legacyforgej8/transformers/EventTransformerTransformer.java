@@ -1,4 +1,4 @@
-package de.femtopedia.mc147j8.transformers;
+package de.femtopedia.legacyforgej8.transformers;
 
 import nilloader.api.lib.asm.Opcodes;
 import nilloader.api.lib.asm.tree.LabelNode;

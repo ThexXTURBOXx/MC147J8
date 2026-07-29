@@ -1,4 +1,4 @@
-package de.femtopedia.mc147j8.transformers;
+package de.femtopedia.legacyforgej8.transformers;
 
 import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
@@ -12,7 +12,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ctx.jumpToStart();
 
         ctx.add(
-                LDC("https://github.com/ThexXTURBOXx/MC147J8/raw/refs/heads/main/libs/%s"),
+                LDC("https://github.com/ThexXTURBOXx/LegacyForgeJ8/raw/refs/heads/main/libs/%s"),
                 ARETURN()
         );
     }
@@ -24,7 +24,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ).jumpBefore();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/mc147j8/transformers/CoreFMLLibrariesTransformer$Hooks", "getLibraries",
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks", "getLibraries",
                         "([Ljava/lang/String;)[Ljava/lang/String;")
         );
 
@@ -33,7 +33,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ).jumpBefore();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/mc147j8/transformers/CoreFMLLibrariesTransformer$Hooks", "getChecksums",
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks", "getChecksums",
                         "([Ljava/lang/String;)[Ljava/lang/String;")
         );
     }

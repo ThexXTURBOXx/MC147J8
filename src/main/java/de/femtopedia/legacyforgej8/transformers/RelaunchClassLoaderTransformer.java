@@ -1,4 +1,4 @@
-package de.femtopedia.mc147j8.transformers;
+package de.femtopedia.legacyforgej8.transformers;
 
 import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
@@ -13,7 +13,7 @@ public class RelaunchClassLoaderTransformer extends MiniTransformer {
 
         ctx.add(
                 ALOAD(0),
-                INVOKESTATIC("de/femtopedia/mc147j8/api/API", "registerExclusions",
+                INVOKESTATIC("de/femtopedia/legacyforgej8/api/API", "registerExclusions",
                         "(Lcpw/mods/fml/relauncher/RelaunchClassLoader;)V")
         );
     }

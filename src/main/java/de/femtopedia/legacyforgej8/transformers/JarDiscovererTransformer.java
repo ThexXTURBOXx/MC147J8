@@ -1,4 +1,4 @@
-package de.femtopedia.mc147j8.transformers;
+package de.femtopedia.legacyforgej8.transformers;
 
 import java.util.zip.ZipEntry;
 import nilloader.api.lib.asm.tree.AbstractInsnNode;
@@ -35,7 +35,7 @@ public class JarDiscovererTransformer extends MiniTransformer {
         patternLoad.jumpBefore();
         ctx.add(
                 aload.clone(null),
-                INVOKESTATIC("de/femtopedia/mc147j8/transformers/JarDiscovererTransformer$Hooks", "shouldSkipEntry",
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/JarDiscovererTransformer$Hooks", "shouldSkipEntry",
                         "(Ljava/util/zip/ZipEntry;)Z"),
                 IFNE(Lskip)
         );

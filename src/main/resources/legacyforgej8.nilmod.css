@@ -1,0 +1,10 @@
+@nilmod {
+    name: "LegacyForgeJ8";
+    description: "Makes Java 8 Forge mods run on Legacy Minecraft.";
+    authors: "ThexXTURBOXx";
+    version: "${version}";
+}
+
+entrypoints {
+    premain: "de.femtopedia.legacyforgej8.LegacyForgeJ8Premain";
+}

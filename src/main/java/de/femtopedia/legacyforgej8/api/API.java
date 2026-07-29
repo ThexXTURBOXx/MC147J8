@@ -1,4 +1,4 @@
-package de.femtopedia.mc147j8.api;
+package de.femtopedia.legacyforgej8.api;
 
 import cpw.mods.fml.relauncher.RelaunchClassLoader;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class API {
 
     static {
         // Add known candidates
-        addClassLoaderExclusion("de.femtopedia.mc147j8."); // LegacyForgeJ8
+        addClassLoaderExclusion("de.femtopedia.legacyforgej8."); // LegacyForgeJ8
         addTransformerExclusion("de.femtopedia.hufixes."); // HexxitUltimateFixes
         addTransformerExclusion("de.femtopedia.nil125fix."); // NilFix
         addTransformerExclusion("net.scoobis.nilmenu."); // NilMenu

@@ -58,7 +58,7 @@ jobs:
           name: ${{ env.MOD_VERSION }}
           version: ${{ env.MOD_VERSION }}
           changelog: |
-            Full changelog can be found on [GitHub](https://github.com/ThexXTURBOXx/MC147J8/releases)
+            Full changelog can be found on [GitHub](https://github.com/ThexXTURBOXx/LegacyForgeJ8/releases)
           loaders: nilloader
           environment: client | server
           game-versions: |

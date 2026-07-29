@@ -1,6 +1,6 @@
-# MC147J8
+# LegacyForgeJ8
 
-Nilmod enabling Forge on MC 1.4.7 to load mods compiled with Java 8 properly.
+Nilmod enabling Forge on Legacy Minecraft (1.3.2 up to 1.5.2) to load mods compiled with Java 8 properly.
 
 ## Current fixes
 
