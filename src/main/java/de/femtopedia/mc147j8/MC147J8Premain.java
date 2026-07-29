@@ -10,6 +10,7 @@ import de.femtopedia.mc147j8.transformers.ModAnnotationVisitorTransformer;
 import de.femtopedia.mc147j8.transformers.ModClassVisitorTransformer;
 import de.femtopedia.mc147j8.transformers.ModFieldVisitorTransformer;
 import de.femtopedia.mc147j8.transformers.ModMethodVisitorTransformer;
+import de.femtopedia.mc147j8.transformers.RelaunchClassLoaderTransformer;
 import de.femtopedia.mc147j8.transformers.RelaunchLibraryManagerTransformer;
 import nilloader.api.ClassTransformer;
 import nilloader.api.NilLogger;
@@ -39,6 +40,10 @@ public class MC147J8Premain implements Runnable {
         ClassTransformer.register(new JarDiscovererTransformer());
 
         log.info("Skipping some unsupported Java 9+ entries...");
+
+        ClassTransformer.register(new RelaunchClassLoaderTransformer());
+
+        log.info("Injected API for registering own exclusions.");
     }
 
 }
