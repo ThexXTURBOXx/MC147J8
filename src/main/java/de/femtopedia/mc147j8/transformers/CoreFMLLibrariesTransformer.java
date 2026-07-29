@@ -15,7 +15,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
 
         ctx.add(
                 POP(),
-                LDC("https://web.archive.org/web/20190716130335if_/http://files.minecraftforge.net/fmllibs/%s")
+                LDC("https://github.com/ThexXTURBOXx/MC147J8/raw/refs/heads/main/libs/%s")
         );
     }
 
@@ -49,7 +49,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
                 AASTORE(),
                 DUP(),
                 ICONST_4(),
-                LDC("gson-2.13.1.jar")
+                LDC("gson-2.14.0.jar")
         );
 
         ctx.search(
@@ -80,7 +80,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
                 AASTORE(),
                 DUP(),
                 ICONST_4(),
-                LDC("853ce06c11316b33a8eae5e9095da096a9528b8f")
+                LDC("efc0e34ede4e3204eaefb84a00e55e8c86634382")
         );
     }
 
