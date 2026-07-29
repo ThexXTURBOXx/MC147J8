@@ -26,6 +26,7 @@ public class EventTransformerTransformer extends MiniTransformer {
         }
     }
 
+    @Patch.Method.Optional // If this method does not exist, we are (hopefully) on newer 1.4.7 Forge or 1.5.x
     @Patch.Method.AffectsControlFlow
     @Patch.Method("transform(Ljava/lang/String;[B)[B")
     public void makeSureClassContentIsNotNull(PatchContext ctx) {

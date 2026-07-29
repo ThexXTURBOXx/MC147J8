@@ -25,10 +25,12 @@ public class RelaunchLibraryManagerTransformer extends MiniTransformer {
 
     @Patch.Method("<clinit>()V")
     public void increaseDownloadLimits(PatchContext ctx) {
-        ctx.search(
+        PatchContext.SearchResult res = ctx.search(
                 LDC(4194304)
-        ).jumpAfter();
+        );
+        if (!res.isSuccessful()) return; // Probably on 1.5.x and already applied
 
+        res.jumpAfter();
         ctx.add(
                 POP(),
                 LDC(8388608)
