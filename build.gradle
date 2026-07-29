@@ -48,7 +48,7 @@ dependencies {
 
 	game nil.minecraft('1.4.7', 'client')
 
-	jarmod 'net.minecraftforge:forge:1.2.5-3.4.9.171:client@zip'
+	jarmod 'net.minecraftforge:forge:1.4.6-6.5.0.451:universal@zip'
 }
 
 mappings {
