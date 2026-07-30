@@ -10,6 +10,7 @@ import nilloader.api.lib.mini.annotation.Patch;
 @Patch.Class("cpw.mods.fml.common.discovery.JarDiscoverer")
 public class JarDiscovererTransformer extends MiniTransformer {
 
+    @SuppressWarnings("deprecation")
     @Patch.Method.AffectsControlFlow
     @Patch.Method("discover(Lcpw/mods/fml/common/discovery/ModCandidate;Lcpw/mods/fml/common/discovery/ASMDataTable;)" +
                   "Ljava/util/List;")
@@ -35,8 +36,8 @@ public class JarDiscovererTransformer extends MiniTransformer {
         patternLoad.jumpBefore();
         ctx.add(
                 aload.clone(null),
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/JarDiscovererTransformer$Hooks", "shouldSkipEntry",
-                        "(Ljava/util/zip/ZipEntry;)Z"),
+                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/JarDiscovererTransformer$Hooks",
+                        "shouldSkipEntry", "(Ljava/util/zip/ZipEntry;)Z"),
                 IFNE(Lskip)
         );
     }
