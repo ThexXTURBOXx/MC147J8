@@ -5,6 +5,7 @@ import java.util.zip.ZipEntry;
 import nilloader.api.lib.asm.tree.AbstractInsnNode;
 import nilloader.api.lib.asm.tree.LabelNode;
 import nilloader.api.lib.mini.PatchContext;
+import nilloader.api.lib.mini.PatchContext.SearchResult;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("cpw.mods.fml.common.discovery.JarDiscoverer")
@@ -26,7 +27,7 @@ public class JarDiscovererTransformer extends MiniPlusTransformer {
                 Lskip
         );
 
-        PatchContext.SearchResult patternLoad = ctx.search(
+        SearchResult patternLoad = ctx.search(
                 GETSTATIC("cpw/mods/fml/common/discovery/JarDiscoverer", "classFile", "Ljava/util/regex/Pattern;")
         );
         patternLoad.jumpAfter();
