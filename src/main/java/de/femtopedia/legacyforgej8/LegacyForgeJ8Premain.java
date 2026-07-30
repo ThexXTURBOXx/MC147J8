@@ -1,18 +1,18 @@
 package de.femtopedia.legacyforgej8;
 
-import de.femtopedia.legacyforgej8.transformers.ASMTransformerTransformer;
-import de.femtopedia.legacyforgej8.transformers.CoreFMLLibrariesTransformer;
-import de.femtopedia.legacyforgej8.transformers.EventTransformerTransformer;
-import de.femtopedia.legacyforgej8.transformers.FMLRelauncherTransformer;
-import de.femtopedia.legacyforgej8.transformers.JarDiscovererTransformer;
-import de.femtopedia.legacyforgej8.transformers.MLDetectorClassVisitorTransformer;
-import de.femtopedia.legacyforgej8.transformers.MethodInsnNodeTransformer;
-import de.femtopedia.legacyforgej8.transformers.ModAnnotationVisitorTransformer;
-import de.femtopedia.legacyforgej8.transformers.ModClassVisitorTransformer;
-import de.femtopedia.legacyforgej8.transformers.ModFieldVisitorTransformer;
-import de.femtopedia.legacyforgej8.transformers.ModMethodVisitorTransformer;
-import de.femtopedia.legacyforgej8.transformers.RelaunchClassLoaderTransformer;
-import de.femtopedia.legacyforgej8.transformers.RelaunchLibraryManagerTransformer;
+import de.femtopedia.legacyforgej8.transformers.api.RelaunchClassLoaderTransformer;
+import de.femtopedia.legacyforgej8.transformers.asm.MethodInsnNodeTransformer;
+import de.femtopedia.legacyforgej8.transformers.java9.JarDiscovererTransformer;
+import de.femtopedia.legacyforgej8.transformers.libs.CoreFMLLibrariesTransformer;
+import de.femtopedia.legacyforgej8.transformers.libs.RelaunchLibraryManagerTransformer;
+import de.femtopedia.legacyforgej8.transformers.mcpc.FMLRelauncherTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.ASMTransformerTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.EventTransformerTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.MLDetectorClassVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.ModAnnotationVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.ModClassVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.ModFieldVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.opcodes.ModMethodVisitorTransformer;
 import nilloader.api.ClassTransformer;
 import nilloader.api.NilLogger;
 

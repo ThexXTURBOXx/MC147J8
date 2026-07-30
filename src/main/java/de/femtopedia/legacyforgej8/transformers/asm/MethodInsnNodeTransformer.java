@@ -1,4 +1,4 @@
-package de.femtopedia.legacyforgej8.transformers;
+package de.femtopedia.legacyforgej8.transformers.asm;
 
 import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.asm.tree.LabelNode;

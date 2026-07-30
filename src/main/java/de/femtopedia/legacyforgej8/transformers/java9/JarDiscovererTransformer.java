@@ -1,4 +1,4 @@
-package de.femtopedia.legacyforgej8.transformers;
+package de.femtopedia.legacyforgej8.transformers.java9;
 
 import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import java.util.zip.ZipEntry;

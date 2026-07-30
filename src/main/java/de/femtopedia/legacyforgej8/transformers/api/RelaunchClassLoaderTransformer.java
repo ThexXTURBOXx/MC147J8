@@ -1,4 +1,4 @@
-package de.femtopedia.legacyforgej8.transformers;
+package de.femtopedia.legacyforgej8.transformers.api;
 
 import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.mini.PatchContext;
