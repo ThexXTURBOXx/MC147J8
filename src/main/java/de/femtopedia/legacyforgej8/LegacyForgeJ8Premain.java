@@ -6,6 +6,7 @@ import de.femtopedia.legacyforgej8.transformers.EventTransformerTransformer;
 import de.femtopedia.legacyforgej8.transformers.FMLRelauncherTransformer;
 import de.femtopedia.legacyforgej8.transformers.JarDiscovererTransformer;
 import de.femtopedia.legacyforgej8.transformers.MLDetectorClassVisitorTransformer;
+import de.femtopedia.legacyforgej8.transformers.MethodInsnNodeTransformer;
 import de.femtopedia.legacyforgej8.transformers.ModAnnotationVisitorTransformer;
 import de.femtopedia.legacyforgej8.transformers.ModClassVisitorTransformer;
 import de.femtopedia.legacyforgej8.transformers.ModFieldVisitorTransformer;
@@ -44,6 +45,10 @@ public class LegacyForgeJ8Premain implements Runnable {
         ClassTransformer.register(new RelaunchClassLoaderTransformer());
 
         log.info("Injected API for registering own exclusions.");
+
+        ClassTransformer.register(new MethodInsnNodeTransformer());
+
+        log.info("Patched ASM itself just to be safe.");
     }
 
 }
