@@ -57,8 +57,8 @@ public class API {
      *            the exceptions in.
      */
     public static void registerExclusions(RelaunchClassLoader rcl) {
-        classLoaderExceptions.forEach(toExclude -> rcl.addClassLoaderExclusion(toExclude));
-        transformerExceptions.forEach(toExclude -> rcl.addTransformerExclusion(toExclude));
+        classLoaderExceptions.forEach(rcl::addClassLoaderExclusion);
+        transformerExceptions.forEach(rcl::addTransformerExclusion);
     }
 
 }
