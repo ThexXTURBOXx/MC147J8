@@ -1,19 +1,18 @@
 package de.femtopedia.legacyforgej8.transformers;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("cpw.mods.fml.relauncher.CoreFMLLibraries")
-public class CoreFMLLibrariesTransformer extends MiniTransformer {
+public class CoreFMLLibrariesTransformer extends MiniPlusTransformer {
 
     @Patch.Method("getRootURL()Ljava/lang/String;")
     public void useMirror(PatchContext ctx) {
         ctx.jumpToStart();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks",
-                        "getRootURL", "()Ljava/lang/String;"),
+                INVOKESTATIC(hooks(), "getRootURL", "()Ljava/lang/String;"),
                 ARETURN()
         );
     }
@@ -25,8 +24,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ).jumpBefore();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks",
-                        "getLibraries", "([Ljava/lang/String;)[Ljava/lang/String;")
+                INVOKESTATIC(hooks(), "getLibraries", "([Ljava/lang/String;)[Ljava/lang/String;")
         );
 
         ctx.search(
@@ -34,8 +32,7 @@ public class CoreFMLLibrariesTransformer extends MiniTransformer {
         ).jumpBefore();
 
         ctx.add(
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/CoreFMLLibrariesTransformer$Hooks",
-                        "getChecksums", "([Ljava/lang/String;)[Ljava/lang/String;")
+                INVOKESTATIC(hooks(), "getChecksums", "([Ljava/lang/String;)[Ljava/lang/String;")
         );
     }
 

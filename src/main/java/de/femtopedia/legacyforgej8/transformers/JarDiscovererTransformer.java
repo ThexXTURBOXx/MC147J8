@@ -1,14 +1,14 @@
 package de.femtopedia.legacyforgej8.transformers;
 
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import java.util.zip.ZipEntry;
 import nilloader.api.lib.asm.tree.AbstractInsnNode;
 import nilloader.api.lib.asm.tree.LabelNode;
-import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("cpw.mods.fml.common.discovery.JarDiscoverer")
-public class JarDiscovererTransformer extends MiniTransformer {
+public class JarDiscovererTransformer extends MiniPlusTransformer {
 
     @SuppressWarnings("deprecation")
     @Patch.Method.AffectsControlFlow
@@ -36,8 +36,7 @@ public class JarDiscovererTransformer extends MiniTransformer {
         patternLoad.jumpBefore();
         ctx.add(
                 aload.clone(null),
-                INVOKESTATIC("de/femtopedia/legacyforgej8/transformers/JarDiscovererTransformer$Hooks",
-                        "shouldSkipEntry", "(Ljava/util/zip/ZipEntry;)Z"),
+                INVOKESTATIC(hooks(), "shouldSkipEntry", "(Ljava/util/zip/ZipEntry;)Z"),
                 IFNE(Lskip)
         );
     }

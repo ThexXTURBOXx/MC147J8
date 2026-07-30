@@ -1,11 +1,11 @@
 package de.femtopedia.legacyforgej8.transformers;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("cpw.mods.fml.relauncher.RelaunchLibraryManager")
-public class RelaunchLibraryManagerTransformer extends MiniTransformer {
+public class RelaunchLibraryManagerTransformer extends MiniPlusTransformer {
 
     @Patch.Method("downloadFile(Ljava/io/File;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V")
     public void increaseTimeouts(PatchContext ctx) {

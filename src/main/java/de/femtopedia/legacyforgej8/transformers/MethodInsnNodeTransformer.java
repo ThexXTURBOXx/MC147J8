@@ -1,12 +1,12 @@
 package de.femtopedia.legacyforgej8.transformers;
 
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.asm.tree.LabelNode;
-import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("org.objectweb.asm.tree.MethodInsnNode")
-public class MethodInsnNodeTransformer extends MiniTransformer {
+public class MethodInsnNodeTransformer extends MiniPlusTransformer {
 
     @Patch.Method.AffectsControlFlow
     @Patch.Method("setOpcode(I)V")

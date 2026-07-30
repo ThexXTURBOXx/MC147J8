@@ -1,11 +1,11 @@
 package de.femtopedia.legacyforgej8.transformers;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("cpw.mods.fml.relauncher.RelaunchClassLoader")
-public class RelaunchClassLoaderTransformer extends MiniTransformer {
+public class RelaunchClassLoaderTransformer extends MiniPlusTransformer {
 
     @Patch.Method("<init>([Ljava/net/URL;)V")
     public void injectAPI(PatchContext ctx) {

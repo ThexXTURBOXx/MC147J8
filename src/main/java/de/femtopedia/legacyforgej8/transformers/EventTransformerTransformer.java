@@ -1,29 +1,16 @@
 package de.femtopedia.legacyforgej8.transformers;
 
-import nilloader.api.lib.asm.Opcodes;
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.asm.tree.LabelNode;
-import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
-import nilloader.api.lib.mini.PatchContext.SearchResult;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("net.minecraftforge.transformers.EventTransformer")
-public class EventTransformerTransformer extends MiniTransformer {
+public class EventTransformerTransformer extends MiniPlusTransformer {
 
     @Patch.Method("buildEvents(Lorg/objectweb/asm/tree/ClassNode;)Z")
     public void useASM5Opcode(PatchContext ctx) {
-        while (true) {
-            SearchResult res = ctx.search(
-                    LDC(Opcodes.ASM4)
-            );
-            if (!res.isSuccessful()) break;
-            res.jumpAfter();
-
-            ctx.add(
-                    POP(),
-                    LDC(Opcodes.ASM5)
-            );
-        }
+        migrateASM4ToASM5(ctx);
     }
 
     @Patch.Method.Optional // If this method does not exist, we are (hopefully) on newer 1.4.7 Forge or 1.5.x

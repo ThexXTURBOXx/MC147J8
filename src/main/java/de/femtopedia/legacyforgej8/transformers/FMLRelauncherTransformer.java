@@ -1,11 +1,11 @@
 package de.femtopedia.legacyforgej8.transformers;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import de.femtopedia.legacyforgej8.MiniPlusTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("cpw.mods.fml.relauncher.FMLRelauncher")
-public class FMLRelauncherTransformer extends MiniTransformer {
+public class FMLRelauncherTransformer extends MiniPlusTransformer {
 
     @Patch.Method("setupHome(Ljava/io/File;)V")
     public void allowJava8(PatchContext ctx) {
